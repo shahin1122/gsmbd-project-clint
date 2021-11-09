@@ -27,11 +27,7 @@ function App() {
     
       <UserContext.Provider value={[loggedInUser , setLoggedInUser]}>
          <Router>
-
           <div>
-        
-
-
             <Navbar bg="light" text="dark" expand="lg">
               <Navbar.Brand href="/products">GSMBD.com</Navbar.Brand>
               {/* <Image src="holder.js/171x180" rounded /> */}
@@ -44,21 +40,15 @@ function App() {
                   <Link className="m-2 p-2 text-light bg-success rounded" to="#">Deals</Link>
                   <Link className="m-2 p-2 text-light bg-success rounded" to='/login'>Login</Link>
                   <span className="m-2 p-2 text-light bg-success rounded">{loggedInUser.namee}</span>
-                 
-                  
-                </Nav>
+                 </Nav>
                 <Form inline>
                 <img className="mx-3 mx-sm-5" style={{height:"35px" ,width:"35px"}}  className=" rounded-circle"  src={loggedInUser.photoURL} alt=""/>
                   <FormControl type="text" placeholder="Search" className="mr-sm-2" />
                   <Button variant="outline-success">Search</Button>
-                 
                 </Form>
               </Navbar.Collapse>
             </Navbar>
-
-        </div>
-        
-       
+            </div>
         <Switch>
         <Route exact path="/">
              <Products></Products>
@@ -71,23 +61,21 @@ function App() {
           <PrivateRoute path='/cart/:cartId'>
               <Cart></Cart>
           </PrivateRoute>
+
           <PrivateRoute path='/Order'>
               <Order></Order>
           </PrivateRoute>
+
           <PrivateRoute path="/Admin">
              <Admin></Admin>
           </PrivateRoute>
 
           <Route path='/Login'>
           <Login></Login>
-
-        </Route>
-
+          </Route>
           </Switch>
-
           </Router>
-
-        </UserContext.Provider>
+    </UserContext.Provider>
   );
 }
 

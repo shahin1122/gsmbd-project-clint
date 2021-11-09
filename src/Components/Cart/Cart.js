@@ -12,21 +12,16 @@ import { UserContext } from '../../App';
 
 const Cart = () => {
     const [loggedInUser , setLoggedInUser] = useContext(UserContext);
-
     const [selectedDate, setSelectedDate] = useState({
         cheakOut: new Date()
     });
-    
-
     const handleDateChange = (date) => {
         const newDates = {...selectedDate}
         newDates.cheakOut = date 
         setSelectedDate(newDates);
     };
 
-
     const { cartId } = useParams();
-
     const [cart, setCart] = useState({});
 
 
@@ -37,15 +32,6 @@ const Cart = () => {
             .then(data => setCart(data))
 
     }, [cartId])
-
-    
-
-
-
-
-
-
-
 
     const handleBooking=()=>{
         const newBooking = {...loggedInUser , ...selectedDate}
@@ -58,33 +44,10 @@ const Cart = () => {
         .then(res => res.json())
         .then(data => console.log(data))
     }
-
-
-
-
-
-    return (
+        return (
         <div className="m-5">
-
-
-            {/* date and time picker start */}
-
-
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <Grid container justify="space-around">
-                    {/* <KeyboardDatePicker
-                        disableToolbar
-                        variant="inline"
-                        format="MM/dd/yyyy"
-                        margin="normal"
-                        id="date-picker-inline"
-                        label="Date picker inline"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change date',
-                        }}
-                    /> */}
                     <KeyboardDatePicker
                         margin="normal"
                         id="date-picker-dialog"
@@ -96,31 +59,15 @@ const Cart = () => {
                             'aria-label': 'change date',
                         }}
                     />
-                    {/* <KeyboardTimePicker
-                        margin="normal"
-                        id="time-picker"
-                        label="Time picker"
-                        value={selectedDate}
-                        onChange={handleDateChange}
-                        KeyboardButtonProps={{
-                            'aria-label': 'change time',
-                        }}
-                    /> */}
+                    
                 </Grid>
             </MuiPickersUtilsProvider>
 
             <br/>
-            
-
-            {/* date and time picker ends */}
-
+           
             <br/>
             <br/>
-
-
-
             <table class="table w-75 float-right bg-secondary text-light">
-
                 <thead>
                     <tr>
                         <th scope="col">Product ID</th>
@@ -143,7 +90,6 @@ const Cart = () => {
                         <td>৳ {cart.price} TK</td>
 
                     </tr>
-
                     <tr>
                         <td></td>
                         <td></td>
@@ -152,13 +98,7 @@ const Cart = () => {
                     </tr>
                 </tbody>
 
-
-
             </table>
-
-
-
-
         </div>
     );
 };

@@ -4,3 +4,13 @@
     border-radius: 20px;
    
 }
+
+.bgStyle{
+    background-color: #FEE715FF ;
+    transition: 0.4s;
+    border-right: 10px dotted #101820FF;
+}
+
+.bgStyle:hover{
+    border-top-left-radius: 400px !important;
+}
